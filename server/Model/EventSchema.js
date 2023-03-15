@@ -13,10 +13,6 @@ const EventSchema = new mongoose.Schema({
     type : String,
     required : true
   },
-  date: {
-    type : Date,
-    required : true
-  },
 })
 
 const Event = mongoose.model('Event', EventSchema)

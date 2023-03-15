@@ -45,3 +45,56 @@ app.post('/add-event', async(req,res) => {
         })
     }
 })
+
+// GET
+app.get('./get-event', async (req,res) => {
+    const events = await EventSchema.find({})
+try{
+    res.status(200).json({
+        status : 'Success',
+        data : {
+            eventSchema
+        }
+    })
+}catch(err){
+    res.status(500).json({
+        status: 'Failed',
+        message : err
+    })
+  }
+})
+
+// UPDATE
+app.patch('/update-phone/:id', async (req,res) => {
+    const updatedEvent = await EventSchema.findByIdAndUpdate(req.params.id,req.body,{
+        new : true,
+        runValidators : true
+      })
+    try{
+        res.status(200).json({
+            status : 'Success',
+            data : {
+                updatedEvent
+            }
+          })
+    }catch(err){
+        console.log(err)
+    }
+})
+
+
+app.delete('/delete-event/:id', async(req,res) => {
+    await EventSchema.findByIdAndDelete(req.params.id)
+    
+    try{
+      res.status(204).json({
+          status : 'Success',
+          data : {}
+      })
+    }catch(err){
+        res.status(500).json({
+            status: 'Failed',
+            message : err
+        })
+    }
+})
