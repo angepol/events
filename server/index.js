@@ -19,17 +19,16 @@ mongoose.connect(DB, {
     console.log('Data base is connected')
 })
 
-const Event = require('./model/EventSchema')
+const EventBook = require('./model/EventBook')
 
 
 app.get("/", (req, res) => {
     res.json({ test: "hello!" });
   });
 
-// POST
-
+// Post is now working
 app.post('/add-event', async(req,res) => {
-    const newEvent = new Event(req.body)
+    const newEvent = new EventBook(req.body)
     try{
         await newEvent.save()
         res.status(201).json({
@@ -46,14 +45,14 @@ app.post('/add-event', async(req,res) => {
     }
 })
 
-// GET
-app.get('./get-event', async (req,res) => {
-    const events = await EventSchema.find({})
+// Get is now working
+app.get('/get-event', async (req,res) => {
+    const events = await EventBook.find({})
 try{
     res.status(200).json({
         status : 'Success',
         data : {
-            eventSchema
+            events
         }
     })
 }catch(err){
@@ -64,9 +63,9 @@ try{
   }
 })
 
-// UPDATE
-app.patch('/update-phone/:id', async (req,res) => {
-    const updatedEvent = await EventSchema.findByIdAndUpdate(req.params.id,req.body,{
+// update is now working
+app.patch('/update-event/:id', async (req,res) => {
+    const updatedEvent = await EventBook.findByIdAndUpdate(req.params.id,req.body,{
         new : true,
         runValidators : true
       })
@@ -82,9 +81,9 @@ app.patch('/update-phone/:id', async (req,res) => {
     }
 })
 
-
+// delete is now working
 app.delete('/delete-event/:id', async(req,res) => {
-    await EventSchema.findByIdAndDelete(req.params.id)
+    await EventBook.findByIdAndDelete(req.params.id)
     
     try{
       res.status(204).json({

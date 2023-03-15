@@ -1,5 +1,5 @@
 // const { connectDB, dropDB, dropCollections } = require("./setupTestDb");
-const { EventSchema } = require("./model/EventSchema");
+const { EventSchema } = require("./model/EventBook");
 const supertest = require("supertest");
 const index = require("./index.js");
 
@@ -42,6 +42,7 @@ describe("index", () => {
       });
     });
 
+    // POST WORKS
   describe("POST /add-event ", () => {
     it("adds an event to the database", async () => {
         const eventDate = Date.now()
