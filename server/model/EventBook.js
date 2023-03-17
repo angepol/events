@@ -15,6 +15,10 @@ const EventBookSchema = new mongoose.Schema({
   }
 })
 
-const EventBook = mongoose.model('EventBook', EventBookSchema)
+// const EventBook = mongoose.model('EventBook', EventBookSchema)
 
-module.exports = EventBook
+// module.exports = EventBook
+
+
+
+module.exports = EventBook = mongoose.model('event', EventBookSchema);
