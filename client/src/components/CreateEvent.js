@@ -21,7 +21,6 @@ const CreateEvent = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-
         axios
          .post('http://localhost:8080/add-event', event)
          .then((res) => {
@@ -39,7 +38,7 @@ const CreateEvent = () => {
     };
 
 return (
-<div className='CreateBook'>
+<div className='CreateEvent'>
       <div className='container'>
         <div className='row'>
           <div className='col-md-8 m-auto'>

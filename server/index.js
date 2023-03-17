@@ -45,22 +45,44 @@ app.post('/add-event', async(req,res) => {
     }
 })
 
-// Get is now working
-app.get('/get-event', async (req,res) => {
+
+// Get events is working
+
+app.get('/get-events', async (req,res) => {
     const events = await EventBook.find({})
-try{
-    res.status(200).json({
-        status : 'Success',
-        data : {
-            events
-        }
-    })
-}catch(err){
-    res.status(500).json({
-        status: 'Failed',
-        message : err
-    })
-  }
+    try{
+        res.status(200).json({
+            status : 'Success',
+            data : {
+                events
+            }
+        })
+    }catch(err){
+        res.status(500).json({
+            status: 'Failed',
+            message : err
+        })
+    }
+})
+
+
+// showsingle event
+
+app.get('/:id', async (req,res) => {
+    const singleEvent  = await EventBook.findById(req.params.id)
+    try{
+        res.status(200).json({
+            status : 'Success',
+            data : {
+                singleEvent
+            }
+        })
+    }catch(err){
+        res.status(500).json({
+            status: 'Failed',
+            message : err
+        })
+      }
 })
 
 // update is now working
