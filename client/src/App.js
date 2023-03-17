@@ -3,6 +3,7 @@ import './App.css';
 import CreateEvent from './components/CreateEvent';
 import ShowEventList from './components/ShowEventList';
 import ShowEventDetails from './components/ShowEventDetails';
+import UpdateEventInfo from './components/UpdateEventInfo';
 
 const App = () => {
   return (
